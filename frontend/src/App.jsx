@@ -8,6 +8,7 @@ import { ErrorPage } from "./pages/ErrorPage";
 import { Logout } from "./pages/Logout";
 import Hero from "./pages/Hero";
 import CreatePost from "./pages/CreatePost";
+import { Postpage } from "./pages/Postpage";
 function App() {
   const router = createBrowserRouter([
     {
@@ -38,6 +39,10 @@ function App() {
         {
           path: "/createpost",
           element: <CreatePost />,
+        },
+        {
+          path: "/post/:id",
+          element: <Postpage />,
         },
       ],
     },

@@ -54,4 +54,23 @@ router.get("/post", async (req, res) => {
   }
 });
 
+//@@ GET/POST/:ID
+//@@ DESC : Fetch post by post Id and return it
+
+router.get("/post/:id", async (req, res) => {
+  const { id } = req.params;
+
+  const postDocs = await Post.findById(id).populate("author", [
+    "firstname",
+    "lastname",
+  ]);
+  if (postDocs) {
+    return res.status(200).json(postDocs);
+  }
+
+  return res.status(401).json({
+    msg: "something went wrong ",
+  });
+});
+
 export default router;
