@@ -46,7 +46,7 @@ router.post("/signup", async (req, res) => {
 
   const userId = userCreate._id;
   generateToken(res, userId);
-  console.log("token generated from signup");
+  // console.log("token generated from signup");
 
   res.json({
     message: "New user added",
@@ -80,7 +80,7 @@ router.post("/signin", async (req, res) => {
 
   if (findUser && (await findUser.matchPassword(body.password))) {
     generateToken(res, findUser._id);
-    console.log("token generated from signin");
+    // console.log("token generated from signin");
     return res.status(200).json({
       msg: "successfull signin",
       _id: findUser._id,

@@ -9,6 +9,7 @@ import { Logout } from "./pages/Logout";
 import Hero from "./pages/Hero";
 import CreatePost from "./pages/CreatePost";
 import { Postpage } from "./pages/Postpage";
+import { EditPost } from "./pages/EditPost";
 function App() {
   const router = createBrowserRouter([
     {
@@ -43,6 +44,10 @@ function App() {
         {
           path: "/post/:id",
           element: <Postpage />,
+        },
+        {
+          path: "/edit/:id",
+          element: <EditPost />,
         },
       ],
     },

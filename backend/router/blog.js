@@ -41,6 +41,49 @@ router.post(
   }
 );
 
+//@@ DESC : to update a particular post
+//@@ Method:PUT
+//@@ PUT/POST
+
+router.put(
+  "/post",
+  authMiddleware,
+  uploadMiddleware.single("file"),
+  async (req, res) => {
+    const user_id = req.user;
+    let newPath = null;
+    if (req.file) {
+      const { originalname, path } = req.file;
+      const extention = originalname.split(".")[1];
+      // now need to rename the path file name
+      newPath = path + "." + extention;
+      fs.renameSync(path, newPath);
+    }
+    const { id, title, summery, content } = req.body;
+
+    const postDoc = await Post.findById(id);
+    const isAuthor =
+      JSON.stringify(postDoc.author) === JSON.stringify(user_id._id);
+
+    if (!isAuthor) {
+      return res.status(401).json({
+        msg: "you are not the Author, unauthorized access",
+      });
+    }
+
+    const updatePost = await Post.updateOne({
+      title,
+      summery,
+      content,
+      cover: newPath ? newPath : postDoc.cover,
+    });
+
+    return res.status(200).json({
+      msg: "Update Successfull",
+    });
+  }
+);
+
 router.get("/post", async (req, res) => {
   const allPost = await Post.find()
     .populate("author", ["firstname", "lastname"])

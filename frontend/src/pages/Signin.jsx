@@ -30,7 +30,7 @@ export const Signin = () => {
           withCredentials: true,
         }
       );
-      console.log(response.data.msg);
+      // console.log(response.data.msg);
 
       if (response.status === 200) {
         const { username, _id, firstname, lastname } = response.data;
@@ -45,7 +45,7 @@ export const Signin = () => {
         Navigate("/dashboard");
       }
     } catch (error) {
-      console.log("ooo kharap hai kharap hai ", error);
+      console.error("ooo kharap hai kharap hai ", error);
     }
   };
 

@@ -3,10 +3,7 @@ import { JWT_SECRET } from "../config.js";
 import { User } from "../db/Schema.js";
 
 export const authMiddleware = async (req, res, next) => {
-  console.log(`now in middleware auth before token `);
-
   const token = req.cookies?.jwt;
-  console.log(token);
 
   if (!token) {
     return res.status(401).json({

@@ -5,7 +5,7 @@ const generateToken = (res, userId) => {
     expiresIn: "30d",
   });
 
-  console.log(` jwttoken before cookie -- > ${token}`);
+  // console.log(` jwttoken before cookie -- > ${token}`);
 
   res.cookie("jwt", token, {
     httpOnly: true,
@@ -13,7 +13,7 @@ const generateToken = (res, userId) => {
     sameSite: "lax",
     maxAge: 30 * 24 * 60 * 60 * 1000,
   });
-  console.log(`Set-Cookie header: ${res.get("Set-Cookie")}`);
+  // console.log(`Set-Cookie header: ${res.get("Set-Cookie")}`);
 };
 
 export default generateToken;
