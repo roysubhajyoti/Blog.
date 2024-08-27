@@ -59,7 +59,7 @@ const PostDetail = ({
 
       <div
         dangerouslySetInnerHTML={{ __html: content }}
-        className="text-xl text-left p-12"
+        className="text-xl  p-12"
       />
     </div>
   );

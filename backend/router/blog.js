@@ -71,7 +71,7 @@ router.put(
       });
     }
 
-    const updatePost = await Post.updateOne({
+    await postDoc.updateOne({
       title,
       summery,
       content,
@@ -80,6 +80,7 @@ router.put(
 
     return res.status(200).json({
       msg: "Update Successfull",
+      postDoc,
     });
   }
 );

@@ -12,6 +12,18 @@ export const EditPost = () => {
   const [files, setFiles] = useState("");
   const { id } = useParams();
 
+  useEffect(() => {
+    const fetchPost = async () => {
+      const doc = await axios.get(
+        `http://localhost:3000/api/v1/blog/post/${id}`
+      );
+      setTitle(doc.data.title);
+      setContent(doc.data.content);
+      setSummery(doc.data.summery);
+    };
+    fetchPost();
+  }, []);
+
   const UpdatePost = async (e) => {
     e.preventDefault();
     const data = new FormData();
@@ -34,25 +46,13 @@ export const EditPost = () => {
       );
 
       if (Response.status === 200) {
-        // console.log(Response.data);
+        console.log(Response.data);
         setRedirect(true);
       }
     } catch (err) {
       console.error(err);
     }
   };
-
-  useEffect(() => {
-    const fetchPost = async () => {
-      const doc = await axios.get(
-        `http://localhost:3000/api/v1/blog/post/${id}`
-      );
-      setTitle(doc.data.title);
-      setContent(doc.data.content);
-      setSummery(doc.data.summery);
-    };
-    fetchPost();
-  }, []);
 
   if (redirect) {
     Navigate(`/post/${id}`);
