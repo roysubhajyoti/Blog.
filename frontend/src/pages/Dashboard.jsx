@@ -16,7 +16,7 @@ export const Dashboard = () => {
   }, []);
 
   return (
-    <div className=" h-screen p-5">
+    <div className=" min-h-screen p-5">
       {posts.length > 0 &&
         posts.map((post) => <Post key={post._id} {...post} />)}
     </div>

@@ -50,7 +50,7 @@ const CreatePost = () => {
   };
 
   if (redirect) {
-    return Navigate("/dashboard");
+    return Navigate("/");
   }
   return (
     <form

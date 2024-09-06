@@ -14,7 +14,7 @@ export const Logout = () => {
     const logout = async () => {
       try {
         await axios.post("http://localhost:3000/api/v1/user/logout");
-        navigate("/signin");
+        navigate("/signin", { state: { logval: true } });
       } catch (error) {
         console.error("Logout failed:", error);
       }

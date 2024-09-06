@@ -17,17 +17,17 @@ const PostDetail = ({
   return (
     <div className="flex flex-col w-2/3 m-auto mt-5">
       <div className="flex flex-col items-center p-10 gap-1">
-        <h1 className="text-5xl font-serif font-semibold text-center  ">
+        <h1 className="text-5xl font-serif font-semibold text-center dark:text-white ">
           {title}
         </h1>
-        <h3 className="text-gray-400">{createdAt}</h3>
-        <h2 className="font-bold font-serif">
+        <h3 className="text-gray-400 ">{createdAt}</h3>
+        <h2 className="font-bold font-serif dark:text-white">
           {author?.firstname.toUpperCase()} {author?.lastname.toUpperCase()}
         </h2>
         {author?._id === id && (
           <Link
             to={`/edit/${_id}`}
-            className=" flex gap-1 border-blue-200 border px-3 py-1 rounded-md bg-blue-600 text-white"
+            className=" flex gap-1 dark:text-white border-blue-200 border px-3 py-1 rounded-md bg-blue-600 text-white"
           >
             <span>
               <svg
@@ -36,7 +36,7 @@ const PostDetail = ({
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
                 stroke="currentColor"
-                className="size-6"
+                className="size-6 dark:text-gray-50"
               >
                 <path
                   strokeLinecap="round"
@@ -59,7 +59,7 @@ const PostDetail = ({
 
       <div
         dangerouslySetInnerHTML={{ __html: content }}
-        className="text-xl  p-12"
+        className="text-xl  p-12 dark:text-white"
       />
     </div>
   );

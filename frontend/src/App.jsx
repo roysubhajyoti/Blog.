@@ -6,7 +6,7 @@ import { Signin } from "./pages/Signin";
 import { Home } from "./pages/Home";
 import { ErrorPage } from "./pages/ErrorPage";
 import { Logout } from "./pages/Logout";
-import Hero from "./pages/Hero";
+// import Hero from "./pages/Hero";
 import CreatePost from "./pages/CreatePost";
 import { Postpage } from "./pages/Postpage";
 import { EditPost } from "./pages/EditPost";
@@ -17,12 +17,12 @@ function App() {
       element: <Home />,
       errorElement: <ErrorPage />,
       children: [
+        // {
+        //   path: "/",
+        //   element: <Hero />,
+        // },
         {
           path: "/",
-          element: <Hero />,
-        },
-        {
-          path: "/dashboard",
           element: <Dashboard />,
         },
         {

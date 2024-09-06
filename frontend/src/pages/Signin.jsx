@@ -6,8 +6,8 @@ import { InputBox } from "../componennt/InputBox";
 import { SubHeading } from "../componennt/SubHeading";
 import { TransferSuccessful } from "../componennt/TransferSuccessful";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
 import { responseAtom } from "../atom/atoms";
 
 export const Signin = () => {
@@ -15,7 +15,8 @@ export const Signin = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const setResponseAtomVal = useSetRecoilState(responseAtom);
-  const { isLoggedOut } = useRecoilValue(responseAtom);
+  let { state } = useLocation();
+  const logval = state?.logval || false;
   const Navigate = useNavigate();
 
   const handleSignin = async () => {
@@ -42,7 +43,7 @@ export const Signin = () => {
           isLogged: true,
           isLoggedOut: false,
         });
-        Navigate("/dashboard");
+        Navigate("/");
       }
     } catch (error) {
       console.error("ooo kharap hai kharap hai ", error);
@@ -58,7 +59,7 @@ export const Signin = () => {
   return (
     <div className="bg-gradient-to-r from-indigo-500  h-screen flex  justify-center items-center relative">
       <div className="absolute top-4 right-4">
-        {showMessage && isLoggedOut && (
+        {showMessage && logval && (
           <TransferSuccessful message={"user logged out "} />
         )}
       </div>
