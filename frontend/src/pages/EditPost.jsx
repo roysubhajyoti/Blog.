@@ -68,7 +68,7 @@ export const EditPost = () => {
         placeholder="Enter title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        className="border-2 h-9 rounded-lg border-green-900 p-3"
+        className="border-2 h-9 rounded-lg border-green-900 p-3 "
       />
       <input
         type="summery"
@@ -78,9 +78,13 @@ export const EditPost = () => {
         className="border-2 h-9 rounded-lg border-green-900 p-3"
       />
 
-      <input type="file" onChange={(e) => setFiles(e.target.files)} />
+      <input
+        type="file"
+        onChange={(e) => setFiles(e.target.files)}
+        className="dark:text-white"
+      />
       <Editor value={content} onChnage={setContent} />
-      <button className="border border-green-900 h-10 font-semibold text-xl rounded-lg hover:bg-blue-500 hover:text-white">
+      <button className="border border-green-900 h-10 font-semibold text-xl rounded-lg hover:bg-blue-500 hover:text-white dark:text-white">
         Update Post
       </button>
     </form>

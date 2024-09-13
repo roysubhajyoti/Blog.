@@ -1,6 +1,8 @@
 import { useRecoilValue } from "recoil";
 import { responseAtom } from "../atom/atoms";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Skeleton } from "../Skeleton/Skeleton";
 
 const PostDetail = ({
   author,
@@ -13,6 +15,17 @@ const PostDetail = ({
   _id,
 }) => {
   const { id } = useRecoilValue(responseAtom);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  });
+
+  if (loading) {
+    return <Skeleton />;
+  }
 
   return (
     <div className="flex flex-col w-2/3 m-auto mt-5">
@@ -49,7 +62,7 @@ const PostDetail = ({
           </Link>
         )}
       </div>
-      <div className="flex justify-center relative shadow-xl rounded-lg overflow-hidden">
+      <div className="flex justify-center relative rounded-lg overflow-hidden">
         <img
           src={"http://localhost:3000/" + cover}
           alt="img"

@@ -18,9 +18,15 @@ export default {
           "0%": { strokeDasharray: "0, 100" },
           "100%": { strokeDasharray: "100, 0" },
         },
+        dot: {
+          "0%": { opacity: "0" },
+          "50%": { opacity: "1" },
+          "100%": { opacity: "0" },
+        },
       },
       animation: {
         draw: "draw 2s ease-in-out forwards",
+        dot: "dot .5s steps(1) infinite",
       },
     },
   },

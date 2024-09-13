@@ -9,7 +9,7 @@ export const Home = () => {
       <div className="flex-grow mt-16">
         <Outlet />
       </div>
-      <footer className="dark:text-midnightLite dark:bg-slate-700 bg-slate-100 text-center py-2 mt-auto h-12">
+      <footer className="dark:text-midnightLite dark:bg-slate-700 bg-slate-100 flex justify-center items-center py-2 mt-auto h-12">
         ©️All rights reserved, made by SJR
       </footer>
     </div>

@@ -117,4 +117,24 @@ router.get("/post/:id", async (req, res) => {
   });
 });
 
+// @desc  Writer can see All Of his posts
+//route   get /api/v1/blog/myposts
+//@access private
+
+router.get("/myposts", authMiddleware, async (req, res) => {
+  const author = req.user._id;
+
+  const writerPosts = await Post.find({ author: author }).populate("author", [
+    "firstname",
+    "lastname",
+  ]);
+
+  if (writerPosts) {
+    return res.status(200).json(writerPosts);
+  }
+  return res.status(200).json({
+    msg: "You did not Author any Post ...Thank You",
+  });
+});
+
 export default router;
