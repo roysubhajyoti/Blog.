@@ -31,29 +31,33 @@ export const Signup = () => {
   };
 
   return (
-    <div className="bg-gradient-to-r from-indigo-500  h-screen flex  justify-center items-center ">
-      <div className="w-[22rem] h-[600px] border-2 rounded-md flex flex-col justify-center bg-transparent/10 shadow-2xl border-blue-700">
+    <div className="bg-gradient-to-r from-indigo-500 h-screen flex  justify-center items-center ">
+      <div className="w-[22rem] h-[580px] border-2 rounded-md flex flex-col justify-center bg-transparent/10 shadow-2xl border-blue-700 dark:border-midnightLite">
         <Header label={"Signup"} />
         <SubHeading label={"Enter Your Information to create an account"} />
         <InputBox
           onChange={(e) => setFirstName(e.target.value)}
           label="First Name"
           placeholder="Jhon"
+          type="text"
         />
         <InputBox
           onChange={(e) => setLastName(e.target.value)}
           label="Last Name"
           placeholder="Doe"
+          type="text"
         />
         <InputBox
           onChange={(e) => setUsername(e.target.value)}
           label="Email"
           placeholder="Jhon@gmail.com"
+          type="email"
         />
         <InputBox
           onChange={(e) => setPassword(e.target.value)}
           label="Password"
           placeholder="Halamati@habibi"
+          type="password"
         />
         <Button name="Sign up" onClick={handleSignup} />
 

@@ -17,14 +17,30 @@ export const Navbar = () => {
   return (
     <div className="h-16 dark:bg-transparent/50 dark:drop-shadow-2xl dark:backdrop-blur-md bg-transparent/20 backdrop-blur-md shadow-xl font-semibold text-lg list-none flex  justify-between items-center text-white  gap-6 fixed top-0 left-0 right-0 z-50">
       <div>
-        <Link
-          to="/"
-          className="text-green-800 dark:text-white absolute top-3 left-8 text-3xl"
-        >
-          <li>Blog.</li>
+        <Link to="/" className=" absolute top-1 left-7 text-3xl">
+          <svg
+            className="w-32 h-28"
+            viewBox="0 0 100 150"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            strokeWidth="2"
+          >
+            <text
+              x="10"
+              y="50"
+              fontSize="48"
+              fontFamily="sans-serif"
+              className="animate-draw text-green-800 dark:text-white "
+              stroke="currentColor"
+              strokeDasharray="100"
+              strokeDashoffset="0"
+            >
+              Blog.
+            </text>
+          </svg>
         </Link>
       </div>
-      <div className="flex justify-end dark:text-white items-center w-2/3 gap-10 text-black pr-20">
+      <div className="flex justify-end dark:text-midnightLink items-center w-2/3 gap-10 text-black pr-20">
         {isLogged && (
           <NavLink
             to="/profile"

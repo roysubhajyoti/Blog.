@@ -49,11 +49,12 @@ const PostDetail = ({
           </Link>
         )}
       </div>
-      <div className="flex justify-center">
+      <div className="flex justify-center relative shadow-xl rounded-lg overflow-hidden">
         <img
           src={"http://localhost:3000/" + cover}
           alt="img"
           // className="w-96 h-44 "
+          className="transition-all duration-300  relative z-0 rounded-lg hover:scale-110"
         />
       </div>
 

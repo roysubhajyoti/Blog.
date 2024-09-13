@@ -62,21 +62,30 @@ const CreatePost = () => {
         placeholder="Enter title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        className="border-2 h-9 rounded-lg border-green-900 p-3"
+        className="border-2 h-9 rounded-lg border-green-900 p-3 dark:bg-midnightLite dark:placeholder-midnightLink"
       />
       <input
         type="summery"
         placeholder="summery"
         value={summery}
         onChange={(e) => setSummery(e.target.value)}
-        className="border-2 h-9 rounded-lg border-green-900 p-3"
+        className="border-2 h-9 rounded-lg border-green-900 p-3 dark:bg-midnightLite dark:placeholder-midnightLink"
       />
 
-      <input type="file" onChange={(e) => setFiles(e.target.files)} />
+      <input
+        type="file"
+        onChange={(e) => setFiles(e.target.files)}
+        className="dark:text-white"
+      />
       <Editor value={content} onChnage={setContent} />
-      <button className="border border-green-900 h-10 font-semibold text-xl rounded-lg">
-        Create Post
-      </button>
+      <div className="flex justify-between">
+        <button className="border border-green-900 dark:text-white dark:border-midnightLite h-10 font-semibold text-xl rounded-lg cursor-pointer px-9 py-1 bg-blue-600 dark:bg-blue-500  text-center fo">
+          Save
+        </button>
+        <button className="border border-green-900 dark:text-white dark:border-midnightLite h-10 font-semibold text-xl rounded-lg cursor-pointer px-9 py-1 bg-green-700 dark:bg-green-500 text-center fo">
+          Publish
+        </button>
+      </div>
     </form>
   );
 };

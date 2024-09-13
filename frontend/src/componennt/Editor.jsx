@@ -34,6 +34,7 @@ export const Editor = ({ value, onChnage }) => {
       modules={modules}
       formats={formats}
       onChange={onChnage}
+      className="dark:bg-midnightLite"
     />
   );
 };

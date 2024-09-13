@@ -71,11 +71,13 @@ export const Signin = () => {
             onChange={(e) => setUsername(e.target.value)}
             label="Email"
             placeholder="Jhon@gmail.com"
+            type="email"
           />
           <InputBox
             onChange={(e) => setPassword(e.target.value)}
             label="Password"
             placeholder="Halamati@habibi"
+            type="password"
           />
           <Button name="Sign in" onClick={handleSignin} />
           <BottomWarning label="Don't have an account ?" page="signup" />
