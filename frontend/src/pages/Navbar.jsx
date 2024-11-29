@@ -26,9 +26,9 @@ export const Navbar = () => {
             strokeWidth="2"
           >
             <text
-              x="10"
+              x="-20"
               y="50"
-              fontSize="48"
+              fontSize="40"
               fontFamily="sans-serif"
               className="animate-draw text-green-800 dark:text-white "
               stroke="currentColor"

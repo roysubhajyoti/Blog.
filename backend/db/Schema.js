@@ -1,8 +1,7 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
-mongoose.connect(
-  "mongodb+srv://royknight272:Radhekrishna%4051@cluster0.tcyy2u4.mongodb.net/blog"
-);
+import { URL } from "../config";
+mongoose.connect(URL);
 
 const UserSchema = new mongoose.Schema(
   {
