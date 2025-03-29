@@ -12,6 +12,7 @@ export default {
         midnighttext: "#A9D5E0",
         midnightLite: "#7F8EA3",
         midnightLink: "#FFFFFF",
+        darkblueuser: "#2C3E50",
       },
       keyframes: {
         draw: {

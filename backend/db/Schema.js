@@ -1,8 +1,7 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
-import { URL } from "../config";
+import { URL } from "../config.js";
 mongoose.connect(URL);
-
 const UserSchema = new mongoose.Schema(
   {
     firstname: {
@@ -57,6 +56,11 @@ const PostSchema = new mongoose.Schema(
     author: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
+    },
+    status: {
+      type: String,
+      enum: ["draft", "published"],
+      default: "draft",
     },
   },
   {
