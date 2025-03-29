@@ -16,56 +16,31 @@ export const Navbar = () => {
 
   return (
     <div className="h-16 dark:bg-transparent/50 dark:drop-shadow-2xl dark:backdrop-blur-md bg-transparent/20 backdrop-blur-md shadow-xl font-semibold text-lg list-none flex  justify-between items-center text-white  gap-6 fixed top-0 left-0 right-0 z-50">
-      <div>
-        <Link to="/" className=" absolute top-1 left-7 text-3xl">
-          <svg
-            className="w-32 h-28"
-            viewBox="0 0 100 150"
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            strokeWidth="2"
-          >
-            <text
-              x="-20"
-              y="50"
-              fontSize="40"
-              fontFamily="sans-serif"
-              className="animate-draw text-green-800 dark:text-white "
-              stroke="currentColor"
-              strokeDasharray="100"
-              strokeDashoffset="0"
-            >
-              Blog.
-            </text>
-          </svg>
+      <h1>
+        <Link
+          to="/"
+          className="ml-6 text-black text-3xl font-bold font-Playpen"
+        >
+          BodhaBytes
         </Link>
-      </div>
+      </h1>
       <div className="flex justify-end dark:text-midnightLink items-center w-2/3 gap-10 text-black pr-20">
-        {isLogged && (
-          <NavLink
-            to="/profile"
-            className={({ isActive }) => (isActive ? "text-green-500" : "")}
-          >
-            <li>Profile</li>
-          </NavLink>
-        )}
-
         {isLoggedOut && (
           <NavLink
             to="/signin"
             className={({ isActive }) => (isActive ? "text-green-500" : "")}
           >
-            <li>Signin</li>
+            <li>Sign In</li>
           </NavLink>
         )}
-        {isLoggedOut && (
+        {/* {isLoggedOut && (
           <NavLink
             to="/signup"
             className={({ isActive }) => (isActive ? "text-green-500" : "")}
           >
             <li>Signup</li>
           </NavLink>
-        )}
+        )} */}
         {isLogged && (
           <NavLink
             to="/createpost"
@@ -101,9 +76,14 @@ export const Navbar = () => {
           </NavLink>
         )}
         {isLogged && (
-          <h2 className="h-9 w-9 rounded-full flex justify-center items-center font-serif text-lg bg-green-800 text-white">
-            {firstName[0].toUpperCase()}
-          </h2>
+          <NavLink
+            to="/profile"
+            className={({ isActive }) => (isActive ? "text-green-500" : "")}
+          >
+            <h3 className="h-9 w-9 rounded-full flex justify-center items-center font-serif text-lg bg-green-800 text-white">
+              {firstName[0].toUpperCase()}
+            </h3>
+          </NavLink>
         )}
         <button onClick={handleTheme}>
           {theme === "dark" ? (

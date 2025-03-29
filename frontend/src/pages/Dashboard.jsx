@@ -24,7 +24,9 @@ export const Dashboard = () => {
   return (
     <div className=" min-h-screen p-5 ">
       {posts.length > 0 &&
-        posts.map((post) => <Post key={post._id} {...post} />)}
+        posts
+          .filter((post) => post.status === "published")
+          .map((post) => <Post key={post._id} {...post} />)}
     </div>
   );
 };

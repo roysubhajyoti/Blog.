@@ -23,8 +23,8 @@ router.post("/signup", async (req, res) => {
   const body = req.body;
   const response = signUpZodSchema.safeParse(req.body);
   if (!response.success) {
-    return res.json({
-      message: "Invalid Input please try again",
+    return res.status(400).json({
+      message: "Invalid Input please check password/username",
     });
   }
 

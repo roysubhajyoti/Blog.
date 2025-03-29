@@ -11,7 +11,6 @@ export const EditPost = () => {
   const [content, setContent] = useState("");
   const [files, setFiles] = useState("");
   const { id } = useParams();
-
   useEffect(() => {
     const fetchPost = async () => {
       const doc = await axios.get(
@@ -54,10 +53,11 @@ export const EditPost = () => {
     }
   };
 
-  if (redirect) {
-    Navigate(`/post/${id}`);
-  }
-
+  useEffect(() => {
+    if (redirect) {
+      Navigate(`/post/${id}`);
+    }
+  }, [redirect, Navigate, id]);
   return (
     <form
       onSubmit={UpdatePost}

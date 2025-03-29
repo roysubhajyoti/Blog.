@@ -30,16 +30,25 @@ export const AllPostsByWriter = () => {
 
   return (
     <div className="flex flex-col items-center gap-5">
-      <h1 className="dark:text-white ">
-        <span className="font-bold font-serif">Welcome Back</span>
-        <span className="dark:text-amber-200 text-3xl font-bold font-Playpen  px-5">
-          <i>{writerInfo?.firstName}</i>
-        </span>
-      </h1>
-      <h2 className="font-mono font-semibold text-xl mt-4 underline underline-offset-8">
-        {" "}
-        <i>My Content Library</i>
-      </h2>
+      <div className="w-3/4 mt-5">
+        <h1 className="dark:text-white ">
+          <span className="font-bold font-serif">
+            Welcome Back,{" "}
+            <i className="font-Playpen text-xl">{writerInfo?.firstName}</i>
+          </span>
+        </h1>
+
+        <section className="flex gap-4">
+          <button className="relative font-mono text-gray-500 text-xl mt-4 ">
+            {" "}
+            <i>Content Library</i>
+            <span className="absolute inset-x-0 bottom-0 bg-gradient-to-r from-transparent via-cyan-500 to-transparent h-px w-3/4 mx-auto"></span>
+          </button>
+          {/* <button className="font-mono text-gray-500 text-xl mt-4">
+            Reading List
+          </button> */}
+        </section>
+      </div>
       <div>
         {allPost.length > 0 &&
           allPost.map((post) => <Post key={post._id} {...post} />)}

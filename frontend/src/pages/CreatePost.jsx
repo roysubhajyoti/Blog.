@@ -1,7 +1,7 @@
 //integrade tiptap next
 // now install react-quill
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "react-quill/dist/quill.snow.css";
 import { useNavigate } from "react-router-dom";
 import { Editor } from "../componennt/Editor";
@@ -17,17 +17,19 @@ const CreatePost = () => {
   const [title, setTitle] = useState("");
   const [summery, setSummery] = useState("");
   const [content, setContent] = useState("");
-  const [files, setFiles] = useState("");
+  const [files, setFiles] = useState(null);
 
-  const createNewPost = async (e) => {
+  const createNewPost = async (e, status) => {
+    e.preventDefault();
     const data = new FormData();
     data.append("title", title);
     data.append("summery", summery);
     data.append("content", content);
-
+    data.append("status", status); // "draft" or "publish"
     // data.append("file", file);
-    if (files) data.append("file", files[0]);
-    e.preventDefault();
+    if (files && files.length > 0) {
+      data.append("file", files[0]);
+    }
     // logFormData(data);
 
     try {
@@ -41,22 +43,23 @@ const CreatePost = () => {
       );
 
       if (Response.status === 200) {
-        // console.log(Response.data);
+        console.log(Response.data.postDoc._id);
         setRedirect(true);
       }
     } catch (err) {
       console.error(err);
+      console.log("not published");
     }
   };
 
-  if (redirect) {
-    return Navigate("/");
-  }
+  useEffect(() => {
+    if (redirect) {
+      return Navigate("/");
+    }
+  }, [redirect, Navigate]);
+
   return (
-    <form
-      onSubmit={createNewPost}
-      className="flex flex-col gap-4 m-auto w-3/4 mt-5"
-    >
+    <form className="flex flex-col gap-4 m-auto w-3/4 mt-5">
       <input
         type="title"
         placeholder="Enter title"
@@ -79,10 +82,16 @@ const CreatePost = () => {
       />
       <Editor value={content} onChnage={setContent} />
       <div className="flex justify-between">
-        <button className="border border-green-900 dark:text-white dark:border-midnightLite h-10 font-semibold text-xl rounded-lg cursor-pointer px-9 py-1 bg-blue-600 dark:bg-blue-500  text-center fo">
+        <button
+          onClick={(e) => createNewPost(e, "draft")}
+          className="border border-green-900 dark:text-white dark:border-midnightLite h-10 font-semibold text-xl rounded-lg cursor-pointer px-9 py-1 bg-blue-600 dark:bg-blue-500  text-center fo"
+        >
           Save
         </button>
-        <button className="border border-green-900 dark:text-white dark:border-midnightLite h-10 font-semibold text-xl rounded-lg cursor-pointer px-9 py-1 bg-green-700 dark:bg-green-500 text-center fo">
+        <button
+          onClick={(e) => createNewPost(e, "published")}
+          className="border border-green-900 dark:text-white dark:border-midnightLite h-10 font-semibold text-xl rounded-lg cursor-pointer px-9 py-1 bg-green-700 dark:bg-green-500 text-center fo"
+        >
           Publish
         </button>
       </div>

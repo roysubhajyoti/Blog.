@@ -9,6 +9,7 @@ import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
 import { responseAtom } from "../atom/atoms";
+import { InputPassword } from "../componennt/InputPassword";
 
 export const Signin = () => {
   const [showMessage, setShowMessage] = useState(true);
@@ -46,7 +47,10 @@ export const Signin = () => {
         Navigate("/");
       }
     } catch (error) {
-      console.error("ooo kharap hai kharap hai ", error);
+      console.error(
+        "something went wrong while signIn please enter details correctly  ",
+        error
+      );
     }
   };
 
@@ -73,11 +77,10 @@ export const Signin = () => {
             placeholder="Jhon@gmail.com"
             type="email"
           />
-          <InputBox
+          <InputPassword
             onChange={(e) => setPassword(e.target.value)}
             label="Password"
-            placeholder="Halamati@habibi"
-            type="password"
+            placeholder="jhon@12345"
           />
           <Button name="Sign in" onClick={handleSignin} />
           <BottomWarning label="Don't have an account ?" page="signup" />
